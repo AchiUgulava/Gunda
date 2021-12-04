@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Text;
 use Illuminate\Http\Request;
+use App\Models\AboutPageText;
 
 class AboutController extends Controller
 {
+    
     public function index()
     {
-        return view('about');
+        $text = AboutPageText::first();
+        return view('about',[
+            'text' => $text,
+        ]);
     }
 }

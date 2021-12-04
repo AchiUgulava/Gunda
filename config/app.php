@@ -230,5 +230,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
+    'languages' => [
+        'en' => 'English',
+        'ge' => 'Georgian',
+    ],
 
 ];

@@ -20,18 +20,31 @@
         .nav-item:hover { background: #1947ee; }
         .account-link:hover { background: #3d68ff; }
     </style>
-    
+    {{-- tinymc --}}
+    <script src="https://cdn.tiny.cloud/1/63pschvyptpomgeo8aq6nt2c5z101j3x57mom4flvp7t30a1/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+          selector: '#mytextareaEn'
+        });
+        tinymce.init({
+          selector: '#mytextareaGe'
+        });
+      </script>
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
     <!-- ChartJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+      {{-- switchery --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
+    
 </head>
 
 <body class="flex bg-gray-100 font-family-karla">
 
-    <aside class="relative hidden w-64 h-screen shadow-xl bg-sidebar sm:block">
+    <aside class="relative hidden w-64 shadow-xl bg-sidebar lg:block">
         <div class="p-6">
             <a href="index.html" class="text-3xl font-semibold text-white uppercase hover:text-gray-300">Admin</a>
 
@@ -49,6 +62,18 @@
                 <i class="mr-3 fas fa-table"></i>
                 Edit Menu
             </a>
+            <a href="{{ route('products') }}" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
+                <i class="mr-3 fas fa-table"></i>
+                products
+            </a>
+            <a href="{{ route('news') }}" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
+                <i class="mr-3 fas fa-table"></i>
+                news
+            </a>
+            <a href="{{ route('sliders') }}" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
+                <i class="mr-3 fas fa-table"></i>
+                sliders
+            </a>
             <a href="{{ route('editabout') }}" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
                 <i class="mr-3 fas fa-align-left"></i>
                 Edit About us
@@ -64,9 +89,9 @@
         </nav>
     </aside>
 
-    <div class="flex flex-col w-full h-screen overflow-y-hidden">
+    <div class="flex flex-col w-full overflow-y-hidden">
         <!-- Desktop Header -->
-        <header class="items-center hidden w-full px-6 py-2 bg-white sm:flex">
+        <header class="items-center hidden w-full px-6 py-2 bg-white lg:flex">
             <div class="w-1/2"></div>
             <div  class="relative flex justify-end w-1/2">
                 <form action="{{ route('logout') }}" method="post" class="inline p-3">
@@ -77,7 +102,7 @@
         </header>
 
         <!-- Mobile Header & Nav -->
-        <header x-data="{ isOpen: false }" class="w-full px-6 py-5 bg-sidebar sm:hidden">
+        <header x-data="{ isOpen: false }" class="w-full px-6 py-5 bg-sidebar lg:hidden">
             <div class="flex items-center justify-between">
                 <a href="index.html" class="text-3xl font-semibold text-white uppercase hover:text-gray-300">Admin</a>
                 <button @click="isOpen = !isOpen" class="text-3xl text-white focus:outline-none">
@@ -100,9 +125,21 @@
                     <i class="mr-3 fas fa-table"></i>
                     Edit Menu
                 </a>
+                <a href="{{ route('products') }}" class="flex items-center py-2 pl-4 text-white opacity-75 hover:opacity-100 nav-item">
+                    <i class="mr-3 fas fa-table"></i>
+                    Products
+                </a>
+                <a href="{{ route('news') }}" class="flex items-center py-2 pl-4 text-white opacity-75 hover:opacity-100 nav-item">
+                    <i class="mr-3 fas fa-table"></i>
+                    News
+                </a>
+                <a href="{{ route('sliders') }}" class="flex items-center py-2 pl-4 text-white opacity-75 hover:opacity-100 nav-item">
+                    <i class="mr-3 fas fa-table"></i>
+                    sliders
+                </a>
                 <a href="{{ route('editabout') }}" class="flex items-center py-2 pl-4 text-white opacity-75 hover:opacity-100 nav-item">
                     <i class="mr-3 fas fa-align-left"></i>
-                    Edit Abou us
+                    Edit About us
                 </a>
                 <a href="{{ route('editcontact') }}" class="flex items-center py-2 pl-4 text-white opacity-75 hover:opacity-100 nav-item">
                     <i class="mr-3 fas fa-tablet-alt"></i>
@@ -123,6 +160,6 @@
         @yield('content')
 
     </body>
-
+    
 </html>
 

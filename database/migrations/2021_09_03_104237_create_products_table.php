@@ -15,12 +15,11 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
                     $table->id();
-                    $table->string('name');
-                    $table->text('description');
                     $table->string('price');
                     $table->string('image')->nullable();
                     $table->foreignId('type_id')->constrained()->onDelete('cascade');
                     $table->foreignId('baseflavor_id')->constrained()->onDelete('cascade');
+                    $table->boolean('status')->default(0);
                     $table->timestamps();
         });
 
@@ -36,5 +35,6 @@ class CreateProductsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('products');
+        
     }
 }

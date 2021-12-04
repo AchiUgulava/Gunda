@@ -8,29 +8,30 @@
 
 
 
-  <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">    
+  <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', 'Noto Sans Georgian', sans-serif;">    
     
-    <!--Hero-->
-    <div class="pt-24 pb-32 gradient">
-      <div class="container flex flex-col flex-wrap items-center px-3 mx-auto md:flex-row">
-        <!--Left Col-->
-        <div class="flex flex-col items-start justify-center w-full text-center md:w-2/5 md:text-left">
-          
-          <h1 class="my-8 text-5xl font-bold leading-tight">
-            Main Hero Message to sell yourself!
-          </h1>
-          <p class="mb-12 text-2xl leading-normal">
-            We make ice creams
-          </p>
+  
+    <section>
+      <div class="max-h-screen overflow-hidden gradient">
+        <div class="imageSwiper">
+          <div class=" swiper-wrapper">
+            @foreach ($sliders as $slider)
+            <div class="bg-fixed swiper-slide">
+                <img src="/images/{{ $slider->image }}" class=" w-full  img.box z-0" alt="gunda news img" >
+            </div>
+            @endforeach
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
           
         </div>
-        <!--Right Col-->
-        <div class="w-full py-6 text-center md:w-3/5">
-          <img class="z-50 w-full md:w-4/5" src="hero.png" />
-        </div>
+    
       </div>
-    </div>
-    <div class="relative -mt-48 lg:-mt-48">
+    </section>
+    
+  <section class="relative z-20 -mt-20 overflow-visible md:-mt-48">
+    {{-- wave --}}
+    <div>
       <svg viewBox="0 0 1428 174" version="1.1" >
         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
           <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -50,186 +51,150 @@
       </svg>
     </div>
 
-
-    <section class="py-8 bg-white border-b">
-      <div class="container max-w-5xl m-8 mx-auto">
+          {{-- news section --}}
+    <div class="pt-6 bg-white border-b">
+      <div class="container z-20 max-w-5xl m-8 mx-auto sm:w-5/6">
             <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-            News
+            {{ __('News') }}
             </h1>
-        <div class="w-full mb-4">
+        <div class="z-20 w-full mb-4">
           <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient"></div>
         </div>
-        <div class="flex flex-wrap">
-          <div class="w-5/6 p-6 sm:w-1/2">
-            <h3 class="mb-3 text-3xl font-bold leading-none text-gray-800">
-              Lorem ipsum dolor sit amet
-            </h3>
-            <p class="mb-8 text-gray-600">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
-              <br />
-              <br />
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis iure qui placeat modi laborum consectetur nulla explicabo dolore quae, ea ipsa libero dolor voluptas a maiores, quas ipsum? Veritatis, dicta.
-            </p>
-          </div>
-          <div class="w-full p-6 sm:w-1/2">
-            
-            
-          </div>
+        <div class="z-20 swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              @foreach($news as $news)
+                <div class="flex flex-wrap justify-center shadow swiper-slide">
+                  <div class="w-full p-6 md:w-1/2">
+                    <img src="/images/{{ $news->image }}" alt="gunda news img" class="rounded ">
+                  </div>
+                <div class="w-5/6 p-6 text-center md:w-1/2">
+                    <h3 class="mb-3 text-3xl font-bold leading-none text-gray-800 ">
+                      {{ $news->title }}
+                    </h3>
+                    <div class="my-4 text-gray-600">
+                      {!! $news->text !!}
+                    </div>
+                    <p class="p-8 text-sm text-right text-gray-400">
+                       {{ \Carbon\Carbon::createFromTimestamp(strtotime($news->created_at))->format('d/m/Y')}} 
+                    </p>
+                </div>
+              </div>
+              @endforeach
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
-        
+          {{-- <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div> --}}
+      </div>
     </section>
     <section class="py-8 bg-white border-b">
       <div class="container flex flex-wrap pt-4 pb-12 mx-auto">
         <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-          Title
+         {{ __('Our Menu') }}
         </h1>
         <div class="w-full mb-4">
-          <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient"></div>
+          <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient">
+          </div>
         </div>
+        @foreach($categories as $category)
         <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
           <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow">
             <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-              <p class="w-full px-6 text-xs text-gray-600 md:text-sm">
-                xGETTING STARTED
-              </p>
-              <div class="w-full px-6 text-xl font-bold text-gray-800">
-                Lorem ipsum dolor sit amet.
+             
+              <div class="justify-center w-full px-6 text-xl font-bold text-center text-gray-800">
+             {{ $category->name }}
               </div>
               <p class="px-6 mb-5 text-base text-gray-800">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
-              </p>
-            </a>
-          </div>
-          <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow">
-            <div class="flex items-center justify-start">
-              <button class="px-8 py-4 mx-auto my-6 font-bold text-white transition duration-300 ease-in-out transform rounded-full shadow-lg lg:mx-0 hover:underline gradient focus:outline-none focus:shadow-outline hover:scale-105">
-                Action
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
-          <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow">
-            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-              <p class="w-full px-6 text-xs text-gray-600 md:text-sm">
-                xGETTING STARTED
-              </p>
-              <div class="w-full px-6 text-xl font-bold text-gray-800">
-                Lorem ipsum dolor sit amet.
-              </div>
-              <p class="px-6 mb-5 text-base text-gray-800">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+              {!! $category->description !!} 
               </p>
             </a>
           </div>
           <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow">
             <div class="flex items-center justify-center">
-              <button class="px-8 py-4 mx-auto my-6 font-bold text-white transition duration-300 ease-in-out transform rounded-full shadow-lg lg:mx-0 hover:underline gradient focus:outline-none focus:shadow-outline hover:scale-105">
-                Action
-              </button>
+              <a class="px-8 py-4 mx-auto my-6 font-bold text-white transition duration-300 ease-in-out transform rounded-full shadow-lg lg:mx-0 hover:underline gradient focus:outline-none focus:shadow-outline hover:scale-105" href="{{ route('menu.category', $category->name)}}">
+                  {{ __('show more') }}
+                <a>
             </div>
           </div>
         </div>
-        <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
-          <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow">
-            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-              <p class="w-full px-6 text-xs text-gray-600 md:text-sm">
-                xGETTING STARTED
-              </p>
-              <div class="w-full px-6 text-xl font-bold text-gray-800">
-                Lorem ipsum dolor sit amet.
-              </div>
-              <p class="px-6 mb-5 text-base text-gray-800">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
-              </p>
-            </a>
-          </div>
-          <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow">
-            <div class="flex items-center justify-end">
-              <button class="px-8 py-4 mx-auto my-6 font-bold text-white transition duration-300 ease-in-out transform rounded-full shadow-lg lg:mx-0 hover:underline gradient focus:outline-none focus:shadow-outline hover:scale-105">
-                Action
-              </button>
-            </div>
-          </div>
-        </div>
+        @endforeach
+      </div>
       </div>
     </section>
-    <section class="py-8 bg-gray-100">
-      <div class="container px-2 pt-4 pb-12 mx-auto text-gray-800">
+    <section class="py-8 bg-gray-50">
+      <div class="container px-2 pt-4 pb-12 mx-auto text-gray-800 ">
         <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-          Pricing
+          {{ __('New flavors') }}
         </h1>
         <div class="w-full mb-4">
           <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient"></div>
         </div>
-        <div class="flex flex-col justify-center pt-12 my-12 sm:flex-row sm:my-4">
-          <div class="flex flex-col w-5/6 mx-auto mt-4 bg-white rounded-none lg:w-1/4 lg:mx-0 lg:rounded-l-lg">
-            <div class="flex-1 overflow-hidden text-gray-600 bg-white rounded-t rounded-b-none shadow">
-              <div class="p-8 text-3xl font-bold text-center border-b-4">
-                Free
+        {{-- list --}}
+        <div class="flex flex-col items-center justify-center pt-12 my-12 sm:flex-row sm:my-4">
+          
+          <div class="flex flex-col w-5/6 mx-auto mt-4 rounded-none bg-gray-50 lg:w-1/4 lg:mx-0 lg:rounded-l-lg">
+            <div class="overflow-hidden text-gray-600 bg-white rounded-t rounded-b-none shadow ">
+              <div class="p-8 text-3xl font-bold text-center ">
+                {{ $newProducts[1]->name }}
               </div>
-              <ul class="w-full text-sm text-center">
-                <li class="py-4 border-b">Thing</li>
-                <li class="py-4 border-b">Thing</li>
-                <li class="py-4 border-b">Thing</li>
-              </ul>
+              <img class="w-auto overflow-hidden" src="/images/{{ $newProducts[1]->image }}" alt="photo abput gunda">
             </div>
-            <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow">
+            <div class="flex-none p-6 overflow-hidden bg-white rounded-t-none rounded-b shadow">
               <div class="w-full pt-6 text-3xl font-bold text-center text-gray-600">
-                £0
-                <span class="text-base">for one user</span>
+                ${{ $newProducts[1]->price }}
+                <span class="text-base">{{ __('for one thing ') }}</span>
               </div>
-              <div class="flex items-center justify-center">
-                <button class="px-8 py-4 mx-auto my-6 font-bold text-white transition duration-300 ease-in-out transform rounded-full shadow-lg lg:mx-0 hover:underline gradient focus:outline-none focus:shadow-outline hover:scale-105">
-                  Sign Up
-                </button>
-              </div>
+              
+                <div class="flex items-center justify-center w-full mt-4 overflow-hidden">
+                  
+                  <a class="p-4 mx-auto font-bold text-white transition duration-300 ease-in-out transform rounded-full md:py-4 md:px-8 lg:mx-0 gradient focus:outline-none focus:shadow-outline hover:scale-105" href="{{ route('menu.item', $newProducts[1]->id, true, app()->getLocale()) }} ">
+                    {{ __('show more') }}
+                  </a>
+                </div>
             </div>
           </div>
-          <div class="z-10 flex flex-col w-5/6 mx-auto mt-4 bg-white rounded-lg shadow-lg lg:w-1/3 lg:mx-0 sm:-mt-6">
+ 
+          <div class="z-10 flex flex-col w-5/6 mx-auto mt-4 bg-white border-2 rounded-lg shadow-lg lg:w-1/3 lg:mx-0 sm:-mt-6">
             <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow">
-              <div class="w-full p-8 text-3xl font-bold text-center">Basic</div>
+              <div class="w-full p-8 text-3xl font-bold text-center">{{ $newProducts[0]->name }}</div>
               <div class="w-full h-1 py-0 my-0 rounded-t gradient"></div>
-              <ul class="w-full text-base font-bold text-center">
-                <li class="py-4 border-b">Thing</li>
-                <li class="py-4 border-b">Thing</li>
-                <li class="py-4 border-b">Thing</li>
-                <li class="py-4 border-b">Thing</li>
-              </ul>
-            </div>
-            <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow">
-              <div class="w-full pt-6 text-4xl font-bold text-center">
-                £x.99
-                <span class="text-base">/ per user</span>
-              </div>
-              <div class="flex items-center justify-center">
-                <button class="px-8 py-4 mx-auto my-6 font-bold text-white transition duration-300 ease-in-out transform rounded-full shadow-lg lg:mx-0 hover:underline gradient focus:outline-none focus:shadow-outline hover:scale-105">
-                  Sign Up
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="flex flex-col w-5/6 mx-auto mt-4 bg-white rounded-none lg:w-1/4 lg:mx-0 lg:rounded-l-lg">
-            <div class="flex-1 overflow-hidden text-gray-600 bg-white rounded-t rounded-b-none shadow">
-              <div class="p-8 text-3xl font-bold text-center border-b-4">
-                Pro
-              </div>
-              <ul class="w-full text-sm text-center">
-                <li class="py-4 border-b">Thing</li>
-                <li class="py-4 border-b">Thing</li>
-                <li class="py-4 border-b">Thing</li>
-              </ul>
+              <img class="w-full my-auto" src="/images/{{ $newProducts[0]->image }}" alt="photo abput gunda">
             </div>
             <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow">
               <div class="w-full pt-6 text-3xl font-bold text-center text-gray-600">
-                £x.99
-                <span class="text-base">/ per user</span>
+                   ${{ $newProducts[0]->price }}
+                <span class="text-base"> {{ _('for one thing') }}</span>
               </div>
-              <div class="flex items-center justify-center">
-                <button class="px-8 py-4 mx-auto my-6 font-bold text-white transition duration-300 ease-in-out transform rounded-full shadow-lg lg:mx-0 hover:underline gradient focus:outline-none focus:shadow-outline hover:scale-105">
-                  Sign Up
-                </button>
+              <div class="flex items-center justify-center w-full mt-4 overflow-hidden">
+                  
+                <a class="p-4 mx-auto font-bold text-white transition duration-300 ease-in-out transform rounded-full md:py-4 md:px-8 lg:mx-0 gradient focus:outline-none focus:shadow-outline hover:scale-105" href="{{ route('menu.item', $newProducts[0]->id) }}">
+                  {{ __('show more') }}
+                </a>
               </div>
+            </div>
+          </div>
+           
+          <div class="flex flex-col w-5/6 mx-auto mt-4 rounded-none bg-gray-50 lg:w-1/4 lg:mx-0 lg:rounded-l-lg">
+            <div class="overflow-hidden text-gray-600 bg-white rounded-t rounded-b-none shadow ">
+              <div class="p-8 text-3xl font-bold text-center ">
+                {{ $newProducts[2]->name }}
+              </div>
+              <img class="w-auto overflow-hidden" src="/images/{{ $newProducts[2]->image }}" alt="photo abput gunda">
+            </div>
+            <div class="flex-none p-6 overflow-hidden bg-white rounded-t-none rounded-b shadow">
+              <div class="w-full pt-6 text-3xl font-bold text-center text-gray-600">
+                ${{ $newProducts[2]->price }}
+                <span class="text-base">{{ _('') }} for one thing</span>
+              </div>
+                <div class="flex items-center justify-center w-full mt-4 overflow-hidden">
+                  <a class="p-4 mx-auto font-bold text-white transition duration-300 ease-in-out transform rounded-full md:py-4 md:px-8 lg:mx-0 gradient focus:outline-none focus:shadow-outline hover:scale-105" href="{{ route('menu.item', $newProducts[2]->id) }}">
+                    {{ __('show more') }}
+                  </a>
+                </div>
             </div>
           </div>
         </div>
@@ -257,22 +222,77 @@
         </g>
       </g>
     </svg>
-    <section class="container py-6 mx-auto mb-12 text-center">
-      <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
-        Call to Action
-      </h1>
-      <div class="w-full mb-4">
-        <div class="w-1/6 h-1 py-0 mx-auto my-0 bg-white rounded-t opacity-25"></div>
+    <section class="py-8 border-b">
+        
+      <div class="container max-w-5xl m-8 mx-auto">
+            <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+              {{ $contact->title }}
+            </h1>
+        <div class="w-full mb-4">
+          <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient"></div>
+        </div>
+        <div class="flex flex-wrap">
+          <div class="w-5/6 p-6 sm:w-1/2">
+            <p class="mb-8 text-gray-600">{!! $contact->text !!}</p>
+          </div>
+          <div class="w-full p-6 sm:w-1/2">
+            <p class="mb-8 text-gray-600">{{ __('Where to find:') }}</p>
+            <iframe class="mx-auto rounded-lg " src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.675218865062!2d44.787903!3d41.705946499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440d8e817f28bf%3A0xd5ab8cdb2bb5abad!2sGunda%20bar!5e0!3m2!1sen!2sge!4v1631790829913!5m2!1sen!2sge"  allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
       </div>
-      <h3 class="my-4 text-3xl leading-tight">
-        Main Hero Message to sell yourself!
-      </h3>
-      <button class="px-8 py-4 mx-auto my-6 font-bold text-gray-800 transition duration-300 ease-in-out transform bg-white rounded-full shadow-lg lg:mx-0 hover:underline focus:outline-none focus:shadow-outline hover:scale-105">
-        Action!
-      </button>
+      
     </section>
+    {{-- <section class="py-8 border-b">
+        
+      <div class="container max-w-5xl m-8 mx-auto">
+            <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+              {{ __('Contact') }}
+            </h1>
+        <div class="w-full mb-4">
+          <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient"></div>
+        </div>
+        <div class="flex flex-wrap">
+          <div class="w-5/6 p-6 sm:w-1/2">
+            <p class="mb-8 text-gray-600">contact info contact infocontact infocontact infocontact infocontact infocontact info</p>
+          </div>
+          <div class="w-full p-6 sm:w-1/2">
+            <p class="mb-8 text-gray-600">{{ _('Where to find: ') }}</p>
+            <iframe class="mx-auto rounded-lg " src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.675218865062!2d44.787903!3d41.705946499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440d8e817f28bf%3A0xd5ab8cdb2bb5abad!2sGunda%20bar!5e0!3m2!1sen!2sge!4v1631790829913!5m2!1sen!2sge"  allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 gap-2 px-10">
+      <div class="flex items-center justify-between mt-5 bg-black">
+        <!-- Facebook -->
+        <a class="items-center cursor-pointer" href="#" target="_blank">
+          <div
+            class="text-black transition-all duration-500 transform rounded-full hover:text-blue-600 hover:scale-105">
+            <i class="text-5xl fab fa-facebook"></i>
+          </div>
+        </a>
+        <!-- Facebook -->
+        <!-- Twitter -->
+        <a class="items-center cursor-pointer" href="#" target="_blank">
+          <div class="text-white transition-all duration-500 transform rounded-full hover:text-blue-400 hover:scale-105">
+            <i class="text-5xl fab fa-twitter"></i>
+          </div>
+        </a>
+        <!-- Twitter -->
+        <!-- Instagram -->
+        <a class="items-center cursor-pointer" href="#" target="_blank">
+          <div
+            class="text-white transition-all duration-500 transform rounded-full hover:text-pink-600 hover:scale-105">
+            <i class="text-5xl fab fa-instagram"></i>
+          </div>
+        </a>
+        <!-- Instagram -->
+      </div>
+    </div>
+    </section> --}}
     
    
   </body>
+  
 </html>
 @endsection

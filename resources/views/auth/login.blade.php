@@ -53,12 +53,7 @@
                  @enderror
             </div>
 
-            <div class="mb-4">
-                <div>
-                    <input type="checkbox" name="remember" id="remember" class="mr-2">
-                    <label for="remember">Remember me</label>
-                </div>
-            </div>
+            
 
             <div>
                 <button type="submit" class="w-full px-4 py-3 font-medium text-white bg-gray-600 rounded">Login</button>

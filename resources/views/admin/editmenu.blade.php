@@ -12,10 +12,10 @@
                     <li class="mr-1 -mb-px" @click="openTab = 1">
                         <a :class="openTab === 1 ? 'border-l border-t border-r rounded-t text-green-700 font-semibold' : 'text-green-600 hover:text-green-800'" class="inline-block px-4 py-2 font-semibold bg-white" href="#">Add</a>
                     </li>
-                    <li class="mr-1" @click="openTab = 2">
+                    <li class="mr-1 -mb-px" @click="openTab = 2">
                         <a :class="openTab === 2 ? 'border-l border-t border-r rounded-t text-blue-700 font-semibold' : 'text-blue-500 hover:text-blue-800'" class="inline-block px-4 py-2 font-semibold bg-white" href="#">Edit</a>
                     </li>
-                    <li class="mr-1" @click="openTab = 3">
+                    <li class="mr-1 -mb-px" @click="openTab = 3">
                         <a :class="openTab === 3 ? 'border-l border-t border-r rounded-t text-red-700 font-semibold' : 'text-red-600 hover:text-red-900'" class="inline-block px-4 py-2 font-semibold bg-white" href="#">Delete</a>
                     </li>
 
@@ -32,8 +32,17 @@
                             <i class="mr-3 fas fa-list"></i> Menu item
                         </p>
                         <div class="leading-loose">
-                            <form action="{{ route('editmenu') }}" class="p-10 bg-white rounded shadow-xl" method="POST">
+                            <form action="{{ route('editmenu.store') }}" class="p-10 bg-white rounded shadow-xl" method="POST" enctype="multipart/form-data">
                                  @csrf
+                                 @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 {{-- name --}}
                                 <div class="">
                                     <label class="block text-sm text-gray-600 " for="name">Name</label>
@@ -80,25 +89,25 @@
                                 {{-- image --}}
                             
                                       <div>
-                                        <label class="block mt-4 mb-2 text-sm text-gray-600 " for="image">upload image</label>
-                                        <input type="file" name="image" class="px-1 py-1 bg-gray-200 border-2 rounded" placeholder="upload image" required="">
+                                        <label class="block my-2 text-sm text-gray-600 " for="image">upload image</label>
+                                        <input type="file" name="image" class="px-1 py-1 bg-gray-200 border-2 rounded " placeholder="upload image" required="">
                                       </div>
                                  
-                                {{-- tags
+                                {{-- tags --}}
                                 <div class="block pt-4">
                                     <span class="text-gray-700">tags</span>
                                     <div class="mt-2">
                                         @foreach($tags as $tag)
                                         <div>
                                             <label class="inline-flex items-center">
-                                            <input type="checkbox" class="form-checkbox" name="tags" id="tags" value="{{ $tag->id}}">
+                                            <input type="checkbox" class="form-checkbox" name="tags[]" id="tags" value="{{ $tag->id}}">
                                             <span class="ml-2">{{ $tag->name }}</span>
                                             </label>
                                         </div>
                                         @endforeach
                                     </div>
-                                </div> --}}
-
+                                </div>
+                                
                                 {{-- submit --}}
                                 <div class="mt-6">
                                     <button class="px-4 py-1 font-light tracking-wider text-white bg-gray-900 rounded" type="submit">Submit</button>

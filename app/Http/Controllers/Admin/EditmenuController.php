@@ -46,7 +46,8 @@ class EditmenuController extends Controller
 
         $imageName = time().'.'.$request->image->extension();
         $request->image->move(public_path('product-images'), $imageName);
-        
+            
+            $product->image= $imageName;
             $product->name= $request->name;
             $product->description = $request->description;
             $product->price = $request->price;
@@ -54,7 +55,9 @@ class EditmenuController extends Controller
             $product->baseflavor_id = $request->baseflavor_id;
         
         $product->save();
-
-        return redirect()->route('admin.editabout');
+        if(is_array($request->tags)){
+            $product->tags()->attach($request->tags);
+        }
+        return redirect()->back();
     }
 }
