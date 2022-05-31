@@ -18,7 +18,6 @@
             <a class="inline-block w-1/3 px-4 py-2 m-2 font-semibold text-center text-blue-600 bg-white rounded shadow md:w-1/5 hover:text-blue-800" href="{{ route('products.flavors') }}">flavors</a>
             <a class="inline-block w-1/3 px-4 py-2 m-2 font-semibold text-center text-blue-600 bg-white rounded shadow md:w-1/5 hover:text-blue-800" href="{{ route('products.tags') }}">tags</a>
             <a class="inline-block w-1/3 px-4 py-2 m-2 font-semibold text-center text-blue-600 bg-white rounded shadow md:w-1/5 hover:text-blue-800" href="{{ route('products.types') }}">types</a>
-            <a class="inline-block w-1/3 px-4 py-2 m-2 font-semibold text-center text-blue-600 bg-white rounded shadow md:w-1/5 hover:text-blue-800" href="{{ route('products.categories') }}">categories</a>
             </div>
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
@@ -140,14 +139,5 @@
     });
 }); 
         </script>
-        {{-- <script>
-            function submit_form(){
-                var form = document.getElementById("status");
-
-                form.submit();
-                
-                alert("{{ $product->name }}{{ $product->status }}");
-            }
-            </script> --}}
 </div>
 @endsection

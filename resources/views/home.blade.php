@@ -21,9 +21,6 @@
             </div>
             @endforeach
           </div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-          
         </div>
     
       </div>
@@ -50,79 +47,72 @@
         </g>
       </svg>
     </div>
-
           {{-- news section --}}
-    <div class="pt-6 bg-white border-b">
-      <div class="container z-20 max-w-5xl m-8 mx-auto sm:w-5/6">
-            <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-            {{ __('News') }}
-            </h1>
-        <div class="z-20 w-full mb-4">
-          <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient"></div>
-        </div>
-        <div class="z-20 swiper">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-              <!-- Slides -->
-              @foreach($news as $news)
-                <div class="flex flex-wrap justify-center shadow swiper-slide">
-                  <div class="w-full p-6 md:w-1/2">
-                    <img src="/images/{{ $news->image }}" alt="gunda news img" class="rounded ">
-                  </div>
-                <div class="w-5/6 p-6 text-center md:w-1/2">
-                    <h3 class="mb-3 text-3xl font-bold leading-none text-gray-800 ">
-                      {{ $news->title }}
-                    </h3>
-                    <div class="my-4 text-gray-600">
-                      {!! $news->text !!}
-                    </div>
-                    <p class="p-8 text-sm text-right text-gray-400">
-                       {{ \Carbon\Carbon::createFromTimestamp(strtotime($news->created_at))->format('d/m/Y')}} 
-                    </p>
-                </div>
+        @if(isset($news))
+          <div class="pt-6 bg-white border-b">
+            <div class="container z-20 max-w-5xl m-8 mx-auto sm:w-5/6">
+                  <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+                  {{ __('News') }}
+                  </h1>
+              <div class="z-20 w-full mb-4">
+                <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient"></div>
               </div>
-              @endforeach
+              <div class="z-20 swiper">
+                  <!-- Additional required wrapper -->
+                  <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    @foreach($news as $news)
+                      <div class="flex flex-wrap justify-center shadow swiper-slide">
+                        <div class="w-full p-6 md:w-1/2">
+                          <img src="/images/{{ $news->image }}" alt="gunda news img" class="rounded ">
+                        </div>
+                      <div class="w-5/6 p-6 text-center md:w-1/2">
+                          <h3 class="mb-3 text-3xl font-bold leading-none text-gray-800 ">
+                            {{ $news->title }}
+                          </h3>
+                          <div class="my-4 text-gray-600">
+                            {!! $news->text !!}
+                          </div>
+                          <p class="p-8 text-sm text-right text-gray-400">
+                            {{ \Carbon\Carbon::createFromTimestamp(strtotime($news->created_at))->format('d/m/Y')}} 
+                          </p>
+                      </div>
+                    </div>
+                    @endforeach
+                  </div>
+                  <div class="swiper-button-next"></div>
+                  <div class="swiper-button-prev"></div>
+              </div>
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
-          {{-- <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-pagination"></div> --}}
-      </div>
-    </section>
+          </div>
+        @endif
+  </section>
     <section class="py-8 bg-white border-b">
       <div class="container flex flex-wrap pt-4 pb-12 mx-auto">
         <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
          {{ __('Our Menu') }}
         </h1>
         <div class="w-full mb-4">
-          <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient">
-          </div>
+          <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient"></div>
+        </div>
+        <div class="flex flex-col flex-grow flex-shrink w-full h-60 p-2 ">
+          <a class="relative overflow-hidden rounded-lg shadow-lg cursor-pointer" href="{{ route("menu") }}">
+            <img class="object-contain w-full" src="/images/{{ $sliders[0]->image }}" alt="menu">
+            <div class="absolute top-0 left-0 w-full px-6 py-4">
+              <h6 class="mb-3 text-xl font-semibold tracking-tight text-white">{{ __("Today's Menu") }}</h4>
+            </div>
+          </a>
         </div>
         @foreach($categories as $category)
-        <div class="flex flex-col flex-grow flex-shrink w-full p-6 md:w-1/3">
-          <div class="flex-1 overflow-hidden bg-white rounded-t rounded-b-none shadow">
-            <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-             
-              <div class="justify-center w-full px-6 text-xl font-bold text-center text-gray-800">
-             {{ $category->name }}
-              </div>
-              <p class="px-6 mb-5 text-base text-gray-800">
-              {!! $category->description !!} 
-              </p>
-            </a>
-          </div>
-          <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow">
-            <div class="flex items-center justify-center">
-              <a class="px-8 py-4 mx-auto my-6 font-bold text-white transition duration-300 ease-in-out transform rounded-full shadow-lg lg:mx-0 hover:underline gradient focus:outline-none focus:shadow-outline hover:scale-105" href="{{ route('menu.category', $category->name)}}">
-                  {{ __('show more') }}
-                <a>
+        <div class="flex flex-col flex-grow flex-shrink w-full p-2 md:w-1/3 md:h-96 h-40">
+          <a class="relative overflow-hidden rounded-lg shadow-lg cursor-pointer" href="{{ route('menu.category', $category->translate('en')->name  )}}">
+            <img class="object-contain" src="/images/{{ $category->image }}" alt="photo abput gunda">
+            <div class="absolute top-0 left-0 w-full px-6 py-4">
+              <h4 class="mb-3 text-xl font-semibold tracking-tight text-white"> {{ $category->name }}</h4>
             </div>
-          </div>
+          </a>
         </div>
         @endforeach
-      </div>
       </div>
     </section>
     <section class="py-8 bg-gray-50">
@@ -183,7 +173,7 @@
               <div class="p-8 text-3xl font-bold text-center ">
                 {{ $newProducts[2]->name }}
               </div>
-              <img class="w-auto overflow-hidden" src="/images/{{ $newProducts[2]->image }}" alt="photo abput gunda">
+              <img class="w-auto overflow-hidden" src="/images/{{ $newProducts[2]->image }}" alt="ice cream gunda">
             </div>
             <div class="flex-none p-6 overflow-hidden bg-white rounded-t-none rounded-b shadow">
               <div class="w-full pt-6 text-3xl font-bold text-center text-gray-600">
@@ -200,7 +190,7 @@
         </div>
       </div>
     </section>
-    <!-- Change the colour #f8fafc to match the previous section colour -->
+    
     <svg class="wave-top" viewBox="0 0 1439 147" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g transform="translate(-1.000000, -14.000000)" fill-rule="nonzero">
@@ -243,55 +233,7 @@
       </div>
       
     </section>
-    {{-- <section class="py-8 border-b">
-        
-      <div class="container max-w-5xl m-8 mx-auto">
-            <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-              {{ __('Contact') }}
-            </h1>
-        <div class="w-full mb-4">
-          <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient"></div>
-        </div>
-        <div class="flex flex-wrap">
-          <div class="w-5/6 p-6 sm:w-1/2">
-            <p class="mb-8 text-gray-600">contact info contact infocontact infocontact infocontact infocontact infocontact info</p>
-          </div>
-          <div class="w-full p-6 sm:w-1/2">
-            <p class="mb-8 text-gray-600">{{ _('Where to find: ') }}</p>
-            <iframe class="mx-auto rounded-lg " src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.675218865062!2d44.787903!3d41.705946499999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440d8e817f28bf%3A0xd5ab8cdb2bb5abad!2sGunda%20bar!5e0!3m2!1sen!2sge!4v1631790829913!5m2!1sen!2sge"  allowfullscreen="" loading="lazy"></iframe>
-          </div>
-        </div>
-      </div>
-      <div class="grid grid-cols-3 gap-2 px-10">
-      <div class="flex items-center justify-between mt-5 bg-black">
-        <!-- Facebook -->
-        <a class="items-center cursor-pointer" href="#" target="_blank">
-          <div
-            class="text-black transition-all duration-500 transform rounded-full hover:text-blue-600 hover:scale-105">
-            <i class="text-5xl fab fa-facebook"></i>
-          </div>
-        </a>
-        <!-- Facebook -->
-        <!-- Twitter -->
-        <a class="items-center cursor-pointer" href="#" target="_blank">
-          <div class="text-white transition-all duration-500 transform rounded-full hover:text-blue-400 hover:scale-105">
-            <i class="text-5xl fab fa-twitter"></i>
-          </div>
-        </a>
-        <!-- Twitter -->
-        <!-- Instagram -->
-        <a class="items-center cursor-pointer" href="#" target="_blank">
-          <div
-            class="text-white transition-all duration-500 transform rounded-full hover:text-pink-600 hover:scale-105">
-            <i class="text-5xl fab fa-instagram"></i>
-          </div>
-        </a>
-        <!-- Instagram -->
-      </div>
-    </div>
-    </section> --}}
     
-   
   </body>
   
 </html>

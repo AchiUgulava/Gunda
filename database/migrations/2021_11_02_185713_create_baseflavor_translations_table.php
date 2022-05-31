@@ -15,14 +15,14 @@ class CreateBaseflavorTranslationsTable extends Migration
     {
         Schema::create('baseflavor_translations', function (Blueprint $table) {
             $table->bigIncrements('id');
-       $table->string('locale')->index();
+            $table->string('locale')->index();
 
-       // Foreign key to the main model
-       $table->unique(['baseflavor_id', 'locale']);
-       $table->foreignid('baseflavor_id')->constrained()->onDelete('cascade');
+            // Foreign key to the main model
+            $table->unique(['baseflavor_id', 'locale']);
+            $table->foreignid('baseflavor_id')->constrained()->onDelete('cascade');
 
-       // Actual fields you want to translate
-       $table->string('name');
+            // Actual fields you want to translate
+            $table->string('name');
         });
     }
 

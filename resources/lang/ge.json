@@ -1,17 +1,19 @@
 {
     "Home":"მთავარი",
     "Menu":"მენიუ",
-    "About us":"გუნდას შესახებ",
+    "About us":"ჩვენს შესახებ",
     "Contact":"კონტაქტი",
     "News":"სიახლეები",
     "Our Menu": "ჩვენი მენიუ",
-    "Gunda":"გუნდა",
+    "Cream Bar":"კრემ ბარი",
     "Ice creams":"ნაყინები",
     "Ice cream":"ნაყინი",
     "show more":"მეტის ნახვა",
     "Other Desserts":"სხვა დესერტები",
     "Drinks":"სასმელები",
     "New flavors":"ახალი გემოები",
-    "Where to find:":"იპოვე გუნდა:",
-    "See all news":"ყველა სიახლის ნახვა"
+    "Where to find:":"მისამართი:",
+    "See all news":"ყველა სიახლის ნახვა",
+    "show all":"ყველას ნახვა" ,
+    "Today's Menu":"დღევანდელი მენიუ"
 }

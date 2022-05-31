@@ -15,16 +15,16 @@ class CreateNewsTranslationsTable extends Migration
     {
         Schema::create('news_translations', function (Blueprint $table) {
             
-       $table->bigIncrements('id');
-       $table->string('locale')->index();
+            $table->bigIncrements('id');
+            $table->string('locale')->index();
 
-       // Foreign key to the main model
-       $table->unique(['news_id', 'locale']);
-       $table->foreignid('news_id')->constrained()->onDelete('cascade');
+            // Foreign key to the main model
+            $table->unique(['news_id', 'locale']);
+            $table->foreignid('news_id')->constrained()->onDelete('cascade');
 
-       // Actual fields you want to translate
-       $table->string('title');
-       $table->longText('text');
+            // Actual fields you want to translate
+            $table->string('title');
+            $table->longText('text');
         });
     }
 

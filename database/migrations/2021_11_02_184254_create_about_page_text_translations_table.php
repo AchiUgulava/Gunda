@@ -15,15 +15,15 @@ class CreateAboutPageTextTranslationsTable extends Migration
     {
         Schema::create('about_page_text_translations', function (Blueprint $table) {
             $table->bigIncrements('id');
-       $table->string('locale')->index();
+            $table->string('locale')->index();
 
-       // Foreign key to the main model
-       $table->unique(['about_page_text_id', 'locale']);
-       $table->foreignid('about_page_text_id')->constrained()->onDelete('cascade');
+            // Foreign key to the main model
+            $table->unique(['about_page_text_id', 'locale']);
+            $table->foreignid('about_page_text_id')->constrained()->onDelete('cascade');
 
-       // Actual fields you want to translate
-       $table->string('title');
-       $table->longText('text');
+            // Actual fields you want to translate
+            $table->string('title');
+            $table->longText('text');
         });
         
     }

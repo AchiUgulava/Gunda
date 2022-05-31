@@ -6,14 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title> Gunda </title>
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/loader.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}"  />
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
         <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300&display=swap" rel="stylesheet">
-        
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" ></script>
         <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
         <style> .gradient{background: linear-gradient(90deg, #339ad5 0%, #5176da 100%);} 
           .swiper {
@@ -32,7 +31,7 @@
         <div class="container flex flex-wrap items-center justify-between w-full py-2 mx-auto mt-0">
           <div class="flex items-center pl-4">
             <a  class="text-2xl font-bold text-white no-underline toggleColour hover:no-underline lg:text-4xl" href="">
-              {{ __('Gunda') }}
+              {{ __('Cream Bar') }}
             </a>
           </div>
           {{-- burger --}}
@@ -80,15 +79,9 @@
                         @endif
                         
               <li class="flex border-l-2 toggleColour">
-                <a class="text-white toggleColour">
+                <a class="text-white toggleColour" href="https://www.facebook.com/Cream-Bar-105432755132393">
                   <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                     <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                  </svg>
-                </a>
-              
-                <a class="text-white toggleColour">
-                  <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
                   </svg>
                 </a>
               
@@ -106,7 +99,10 @@
       </nav>
 </header>
 
-
+  <div id="loader" class="loader-outer gradient">
+    <span class="loader"></span>
+  </div>
+  
 {{-- content  --}}
   @yield('content')
 
@@ -133,10 +129,10 @@
           <p class="text-gray-500 uppercase md:mb-6">Social</p>
           <ul class="mb-6 list-reset">
             <li class="inline-block mt-2 mr-2 md:block md:mr-0">
-              <a href="#" class="text-gray-800 no-underline hover:underline hover:text-pink-500">Facebook</a>
+              <a href="https://www.facebook.com/Cream-Bar-105432755132393" class="text-gray-800 no-underline hover:underline hover:text-pink-500">Facebook</a>
             </li>
             <li class="inline-block mt-2 mr-2 md:block md:mr-0">
-              <a href="#" class="text-gray-800 no-underline hover:underline hover:text-pink-500">Instagram</a>
+              <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Finstagram.com%2Fcream_bar_tbilisi%3Figshid%3DYmMyMTA2M2Y%253D%26fbclid%3DIwAR3wno0sARZPXSCMBocTQeVkRlSjkRJyeqqkY8433DMeVayD5qEwVYnpEik&h=AT0cjLlc9g5Rl-EJDmfjD9Qn7d2jv8ujhJzgKnIdSI9g_j-cDRVWCZ_8cJbJhXtgMcj94QXrT4dF1Yg2iN54QfHCYJeh3iQDdWtK7xVcj-_IDaphKWoQCGwdQ7U2VcTncA3siQ" class="text-gray-800 no-underline hover:underline hover:text-pink-500">Instagram</a>
             </li>
             <li class="inline-block mt-2 mr-2 md:block md:mr-0">
               <a href="#" class="text-gray-800 no-underline hover:underline hover:text-pink-500">Twitter</a>
@@ -148,10 +144,10 @@
           <ul class="mb-6 list-reset">
             
             <li class="inline-block mt-2 mr-2 md:block md:mr-0">
-              <a href="#" class="text-gray-800 no-underline hover:underline hover:text-pink-500">About Us</a>
+              <a href="{{ route("about") }}" class="text-gray-800 no-underline hover:underline hover:text-pink-500">About Us</a>
             </li>
             <li class="inline-block mt-2 mr-2 md:block md:mr-0">
-              <a href="#" class="text-gray-800 no-underline hover:underline hover:text-pink-500">Contact</a>
+              <a href="{{ route("contact") }}" class="text-gray-800 no-underline hover:underline hover:text-pink-500">Contact</a>
             </li>
           </ul>
         </div>
@@ -159,7 +155,7 @@
     </div>
     </footer>
 
-
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" ></script>
 
 
 <script>
@@ -203,6 +199,11 @@
        
       }
     });
+  </script>
+  <script>
+    var loader =  document.getElementById("loader");
+   function vanish() {loader.classList.add("hidden")}
+   window.addEventListener('load',vanish);
   </script>
   <script>
     /*Toggle dropdown list*/

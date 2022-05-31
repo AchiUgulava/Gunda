@@ -30,7 +30,7 @@ class EditaboutController extends Controller
             return view('admin.editabout',['text' => $text]);
         } 
 
-        else redirect()->route('home');
+        else redirect()->route('/');
         
     }
 

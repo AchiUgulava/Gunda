@@ -44,52 +44,9 @@
 
 <body class="flex bg-gray-100 font-family-karla">
 
-    <aside class="relative hidden w-64 shadow-xl bg-sidebar lg:block">
-        <div class="p-6">
-            <a href="index.html" class="text-3xl font-semibold text-white uppercase hover:text-gray-300">Admin</a>
+   
 
-        </div>
-        <nav class="pt-3 text-base font-semibold text-white">
-            <a href="{{ route('adminPannel') }}" class="flex items-center py-4 pl-6 text-white hover:opacity-100 nav-item">
-                <i class="mr-3 fas fa-tachometer-alt"></i>
-                Dashboard
-            </a>
-            <a href="{{ route('edithome') }}" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
-                <i class="mr-3 fas fa-sticky-note"></i>
-                Edit Home Page
-            </a>
-            <a href="{{ route('editmenu') }}" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
-                <i class="mr-3 fas fa-table"></i>
-                Edit Menu
-            </a>
-            <a href="{{ route('products') }}" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
-                <i class="mr-3 fas fa-table"></i>
-                products
-            </a>
-            <a href="{{ route('news') }}" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
-                <i class="mr-3 fas fa-table"></i>
-                news
-            </a>
-            <a href="{{ route('sliders') }}" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
-                <i class="mr-3 fas fa-table"></i>
-                sliders
-            </a>
-            <a href="{{ route('editabout') }}" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
-                <i class="mr-3 fas fa-align-left"></i>
-                Edit About us
-            </a>
-            <a href="{{ route('editcontact') }}" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
-                <i class="mr-3 fas fa-tablet-alt"></i>
-                Edit Contact
-            </a>
-            <a href="calendar.html" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
-                <i class="mr-3 fas fa-calendar"></i>
-                Calendar
-            </a>
-        </nav>
-    </aside>
-
-    <div class="flex flex-col w-full overflow-y-hidden">
+    <div class="fixed flex flex-col w-full overflow-y-hidden">
         <!-- Desktop Header -->
         <header class="items-center hidden w-full px-6 py-2 bg-white lg:flex">
             <div class="w-1/2"></div>
@@ -121,9 +78,9 @@
                     <i class="mr-3 fas fa-sticky-note"></i>
                     Edit Home Page
                 </a>
-                <a href="{{ route('editmenu') }}" class="flex items-center py-2 pl-4 text-white opacity-75 hover:opacity-100 nav-item">
+                <a href="{{ route('categories') }}" class="flex items-center py-2 pl-4 text-white opacity-75 hover:opacity-100 nav-item">
                     <i class="mr-3 fas fa-table"></i>
-                    Edit Menu
+                    categories
                 </a>
                 <a href="{{ route('products') }}" class="flex items-center py-2 pl-4 text-white opacity-75 hover:opacity-100 nav-item">
                     <i class="mr-3 fas fa-table"></i>
@@ -155,9 +112,54 @@
                 </a>
             </nav>
         </header>
-
-
-        @yield('content')
+        <aside class="fixed hidden w-44 h-screen shadow-xl bg-sidebar lg:block">
+            <div class="p-6">
+                <a href="#" class="text-3xl font-semibold text-white uppercase hover:text-gray-300">Admin</a>
+    
+            </div>
+            <nav class="fixed pt-3 text-base font-semibold text-white">
+                <a href="{{ route('adminPannel') }}" class="flex items-center py-4 pl-6 text-white hover:opacity-100 nav-item">
+                    <i class="mr-3 fas fa-tachometer-alt"></i>
+                    Dashboard
+                </a>
+                <a href="{{ route('edithome') }}" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
+                    <i class="mr-3 fas fa-sticky-note"></i>
+                    Edit Home Page
+                </a>
+                <a href="{{ route('categories') }}" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
+                    <i class="mr-3 fas fa-table"></i>
+                    categories
+                </a>
+                <a href="{{ route('products') }}" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
+                    <i class="mr-3 fas fa-table"></i>
+                    products
+                </a>
+                <a href="{{ route('news') }}" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
+                    <i class="mr-3 fas fa-table"></i>
+                    news
+                </a>
+                <a href="{{ route('sliders') }}" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
+                    <i class="mr-3 fas fa-table"></i>
+                    sliders
+                </a>
+                <a href="{{ route('editabout') }}" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
+                    <i class="mr-3 fas fa-align-left"></i>
+                    Edit About us
+                </a>
+                <a href="{{ route('editcontact') }}" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
+                    <i class="mr-3 fas fa-tablet-alt"></i>
+                    Edit Contact
+                </a>
+                <a href="calendar.html" class="flex items-center py-4 pl-6 text-white opacity-75 hover:opacity-100 nav-item">
+                    <i class="mr-3 fas fa-calendar"></i>
+                    Calendar
+                </a>
+            </nav>
+        </aside>
+        <div class="mb-10 max-w-screen realtive lg:ml-44">
+            @yield('content')
+        </div>
+       
 
     </body>
     

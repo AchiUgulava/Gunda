@@ -11,8 +11,11 @@ class Categories extends Model implements TranslatableContract
 {
     use HasFactory;
     use Translatable;
-    
-    public $translatedAttributes = ['name', 'description'];
+    protected $fillable = [
+        'image',
+        'status'
+    ];
+    public $translatedAttributes = ['name', 'description', ];
     public function type()
     {
         return $this->hasMany(Type::class);

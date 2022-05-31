@@ -10,7 +10,7 @@ class Product extends Model implements TranslatableContract
 {
     use HasFactory;
     use Translatable;
-    
+
     public $translatedAttributes = ['name', 'description'];
     protected $fillable = [
         'price',
@@ -19,6 +19,9 @@ class Product extends Model implements TranslatableContract
         'baseflavor_id',
         'satus',
     ];
+
+
+
     public function type()
     {
         return $this->belongsTo(Type::class);

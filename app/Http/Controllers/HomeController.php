@@ -17,7 +17,7 @@ class HomeController extends Controller
     {
      $news = News::latest()->limit(3)->get();
      $newProducts = Product::latest()->limit(3)->get();
-     $categories = Categories::all();
+     $categories = Categories::where('status', true)->get();
      $contact = ContactPageText::first();
      $sliders = Sliders::where('place','home')->get();
         return view('home',[

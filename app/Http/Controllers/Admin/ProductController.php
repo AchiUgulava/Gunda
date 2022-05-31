@@ -8,12 +8,8 @@ use App\Models\Product;
 use App\Models\Baseflavor;
 use App\Models\Categories;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-
-use function PHPUnit\Framework\isEmpty;
-use phpDocumentor\Reflection\DocBlock\Tag;
 
 class ProductController extends Controller
 {
@@ -268,45 +264,6 @@ class ProductController extends Controller
     {
         $type=Type::find($id);
         $type->delete();
-        
-        return redirect()->back();        
-    }
-    public function categories()
-    {
-        $categories=Categories::all();
-        
-        if (Auth::check()) return view('admin.product.categories',  
-        [
-            'categories'=>$categories, 
-        ]);
-        
-        else redirect()->route('home');
-    }
-
-    public function storecategories(Request $request)
-    {
-        
-       
-        $categories = [
-            'en' => [
-                'name'       => $request->input('en_name'),
-                'description' => $request->input('en_description')
-            ],
-            'ge' => [
-                'name'       => $request->input('ge_name'),
-                'description' => $request->input('ge_description')
-            ],
-           
-         ];
-        Categories::create($categories);
-        
-        return redirect()->route('products.categories.store') ;
-    }
-
-    public function deletecategories($id)
-    {
-        $categories=Categories::find($id);
-        $categories->delete();
         
         return redirect()->back();        
     }

@@ -15,15 +15,13 @@ class CreateProductTranslationsTable extends Migration
     {
         Schema::create('product_translations', function (Blueprint $table) {
             $table->bigIncrements('id');
-       $table->string('locale')->index();
-
-       // Foreign key to the main model
-       $table->unique(['product_id', 'locale']);
-       $table->foreignid('product_id')->constrained()->onDelete('cascade');
-
-       // Actual fields you want to translate
-       $table->string('name');
-       $table->longText('description');
+            $table->string('locale')->index();
+            // Foreign key to the main model
+            $table->unique(['product_id', 'locale']);
+            $table->foreignid('product_id')->constrained()->onDelete('cascade');
+            // Actual fields you want to translate
+            $table->string('name');
+            $table->longText('description');
         });
     }
 

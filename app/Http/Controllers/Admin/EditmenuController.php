@@ -6,6 +6,7 @@ use App\Models\Tags;
 use App\Models\Type;
 use App\Models\Product;
 use App\Models\Baseflavor;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -14,50 +15,53 @@ class EditmenuController extends Controller
 {
     public function index()
     {
-        $types=Type::all();
-        $baseflavors=Baseflavor::all();
-        $tags=Tags::all();
-        $products=Product::all();
-
-        if (Auth::check()) return view('admin.editmenu', [
-            'types'=>$types,
-            'baseflavors'=>$baseflavors,
-            'tags'=>$tags,
-            'products'=>$products,
+        $categories=Categories::all();
+        
+        if (Auth::check()) return view('admin.product.categories',  
+        [
+            'categories'=>$categories, 
         ]);
-
+        
         else redirect()->route('home');
-        
     }
-    public function storeProduct(Request $request)
+
+    public function store(Request $request)
     {
-        
-        $this->validate($request, [   
-        'name'=>'required',
-        'description'=>'required',
-        'price'=>'required',
-        'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
-        'type_id'=>'required',
-        'baseflavor_id'=>'required',
-        ]);
-
-
-        $product= new Product();
-
         $imageName = time().'.'.$request->image->extension();
-        $request->image->move(public_path('product-images'), $imageName);
-            
-            $product->image= $imageName;
-            $product->name= $request->name;
-            $product->description = $request->description;
-            $product->price = $request->price;
-            $product->type_id = $request->type_id;
-            $product->baseflavor_id = $request->baseflavor_id;
+        $request->image->move(public_path('images'), $imageName);
+        $categories = [
+            'en' => [
+                'name'       => $request->input('en_name'),
+                'description' => $request->input('en_description')
+            ],
+            'ge' => [
+                'name'       => $request->input('ge_name'),
+                'description' => $request->input('ge_description')
+            ],
+            'image'=>$imageName
+         ];
+        Categories::create($categories);
         
-        $product->save();
-        if(is_array($request->tags)){
-            $product->tags()->attach($request->tags);
-        }
         return redirect()->back();
     }
+
+    public function delete($id)
+    {
+        $categories=Categories::find($id);
+        unlink('images/'.$categories->image);
+        $categories->delete();
+        
+        return redirect()->back();        
+    }
+    public function updateStatus(Request $request )
+    {
+        $category=Categories::find($request->categories_id);
+        
+        
+        $category->status = $request->status;
+    
+        $category->save();
+        
+        return redirect()->route('categories') ;
+     }
 }

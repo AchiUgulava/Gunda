@@ -50,10 +50,11 @@ Route::post('/logout',[LogoutController::class, 'store'])->name('logout');
 // adminpannel
 Route::get('/adminPannel',[AdminController::class, 'index'])->name('adminPannel');
 
-// menu
-Route::get('/adminPannel/editmenu',[EditmenuController::class, 'index'])->name('editmenu');
-Route::post('/adminPannel/editmenu',[EditmenuController::class, 'storeProduct'])->name('editmenu.store');
-
+// categories
+Route::get('/adminPannel/categories',[EditmenuController::class, 'index'])->name('categories');
+Route::post('/adminPannel/categories/store',[EditmenuController::class, 'store'])->name('categories.store');
+Route::post('/adminPannel/categories/{id}/delete',[EditmenuController::class, 'delete'])->name('categories.delete');
+Route::get('/adminPannel/categories/status/update',[EditmenuController::class, 'updateStatus'])->name('categories.update.status');
 // home
 Route::get('/adminPannel/edithome',[EdithomeController::class, 'index'])->name('edithome');
 Route::post('/adminPannel/edithome',[EdithomeController::class, 'store'])->name('edithome.store');
@@ -88,9 +89,6 @@ Route::get('/adminPannel/products/types',[ProductController::class, 'types'])->n
 Route::post('/adminPannel/products/types',[ProductController::class, 'storetypes'])->name('products.types.store');
 Route::get('/adminPannel/products/types/{id}/delete',[ProductController::class, 'deletetypes'])->name('products.types.delete');
 
-Route::get('/adminPannel/products/categories',[ProductController::class, 'categories'])->name('products.categories');
-Route::post('/adminPannel/products/categories',[ProductController::class, 'storecategories'])->name('products.categories.store');
-Route::get('/adminPannel/products/categories/{id}/delete',[ProductController::class, 'deletecategories'])->name('products.categories.delete');
 
 // news
 

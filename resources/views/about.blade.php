@@ -3,53 +3,24 @@
 @section('content')
 <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', 'Noto Sans Georgian', sans-serif;">
 
-<div class="pt-12 pb-32 gradient">
-    <div class="flex flex-col items-center justify-center bg-teal-100 ">
-  
-        <div 
-          class="relative w-full mx-auto"
-          x-data="{ activeSlide: 1, slides: [1, 2, 3, 4, 5] }"
-         >
-          <!-- Slides -->
-          <template x-for="slide in slides" :key="slide">
-            <div
-               x-show="activeSlide === slide"
-               class="flex items-center h-64 p-24 text-5xl font-bold text-white bg-teal-500 rounded-lg ">
-              <span class="w-12 text-center" x-text="slide"></span>
-              <span class="text-teal-300">/</span>
-              <span class="w-12 text-center" x-text="slides.length"></span>
-            </div>
-          </template>
-          
-          <!-- Prev/Next Arrows -->
-          <div class="absolute inset-0 flex">
-            <div class="flex items-center justify-start w-1/2 lg:-mr-8">
-              <button 
-                class="w-12 h-12 font-bold text-teal-500 bg-teal-100 rounded-full hover:text-orange-500 hover:shadow-lg"
-                x-on:click="activeSlide = activeSlide === 1 ? slides.length : activeSlide - 1">
-                &#8592;
-               </button>
-            </div>
-            <div class="flex items-center justify-end w-1/2 ">
-              <button 
-                class="w-12 h-12 font-bold text-teal-500 bg-teal-100 rounded-full hover:text-orange-500 hover:shadow"
-                x-on:click="activeSlide = activeSlide === slides.length ? 1 : activeSlide + 1">
-                &#8594;
-              </button>
-            </div>        
+ 
+  <section>
+    <div class="max-h-screen overflow-hidden gradient">
+      <div class="imageSwiper">
+        <div class=" swiper-wrapper">
+          @foreach ($sliders as $slider)
+          <div class="bg-fixed swiper-slide">
+              <img src="/images/{{ $slider->image }}" class=" w-full  img.box z-0" alt="gunda news img" >
           </div>
-        </div>
-        
+          @endforeach
         </div>
       </div>
-
-
-
-
-
-
+  
+    </div>
+  </section>
+  
+<section class="relative z-20 -mt-20 overflow-visible md:-mt-48">
   {{-- wave --}}
-  <div class="relative -mt-48 lg:-mt-48">
     <svg viewBox="0 0 1428 174" version="1.1" >
       <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -67,10 +38,8 @@
         </g>
       </g>
     </svg>
-   </div>
-   {{-- about --}}
-  <section class="py-8 bg-white border-b">
-  <div class="container max-w-5xl m-8 mx-auto">
+<div class="bg-white pt-4">
+  <div class="container max-w-5xl mx-auto ">
         <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
           {{ $text->title }}
         </h1>
@@ -87,7 +56,10 @@
       </div>
     </div>
   </div>
+</div>
 </section>
+
+       
     </body>
 
 </html>

@@ -15,15 +15,13 @@ class CreateCategoriesTranslationsTable extends Migration
     {
         Schema::create('categories_translations', function (Blueprint $table) {
             $table->bigIncrements('id');
-       $table->string('locale')->index();
-
-       // Foreign key to the main model
-       $table->unique(['categories_id', 'locale']);
-       $table->foreignid('categories_id')->constrained()->onDelete('cascade');
-
-       // Actual fields you want to translate
-       $table->string('name');
-       $table->longText('description');
+            $table->string('locale')->index();
+            // Foreign key to the main model
+            $table->unique(['categories_id', 'locale']);
+            $table->foreignid('categories_id')->constrained()->onDelete('cascade');
+            // Actual fields you want to translate
+            $table->string('name');
+            $table->longText('description');
         });
     }
 
