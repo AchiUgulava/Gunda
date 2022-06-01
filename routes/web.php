@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\EdithomeController;
 use App\Http\Controllers\Admin\EditmenuController;
 use App\Http\Controllers\Admin\EditaboutController;
 use App\Http\Controllers\Admin\EditcontactController;
-
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +46,8 @@ Route::localized(function(){
 Route::get('/login',[LoginController::class, 'index'])->name('login');
 Route::post('/login',[LoginController::class, 'store']);
 Route::post('/logout',[LogoutController::class, 'store'])->name('logout');
+Route::get('/register',[RegisterController::class,'create'])->name('register');
+Route::post('/register',[RegisterController::class,'store'])->name('register.store');
 
 // adminpannel
 Route::get('/adminPannel',[AdminController::class, 'index'])->name('adminPannel');
