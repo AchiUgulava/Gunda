@@ -38,7 +38,7 @@
         </g>
       </g>
     </svg>
-<div class="bg-white pt-4">
+<div class="pt-4 bg-white">
   <div class="container max-w-5xl mx-auto ">
         <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
           {{ $text->title }}
@@ -51,7 +51,7 @@
         <p class="mb-8 text-gray-600">{!! $text->text !!}</p>
       </div>
       <div class="w-full p-6 sm:w-1/2">
-        <img class="mx-auto rounded-lg " src="/images/1631790432.jpg" alt="photo abput gunda">
+        <img class="mx-auto rounded-lg " src="/images/1654287297.jpg" alt="photo abput gunda">
         
       </div>
     </div>

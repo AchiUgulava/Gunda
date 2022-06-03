@@ -8,7 +8,7 @@
     <meta name="description" content="">
 
     <!-- Tailwind -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
         .font-family-karla { font-family: karla; }
@@ -112,7 +112,7 @@
                 </a>
             </nav>
         </header>
-        <aside class="fixed hidden w-44 h-screen shadow-xl bg-sidebar lg:block">
+        <aside class="fixed hidden h-screen shadow-xl w-44 bg-sidebar lg:block">
             <div class="p-6">
                 <a href="#" class="text-3xl font-semibold text-white uppercase hover:text-gray-300">Admin</a>
     
