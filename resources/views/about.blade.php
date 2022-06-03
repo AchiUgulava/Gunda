@@ -51,7 +51,7 @@
         <p class="mb-8 text-gray-600">{!! $text->text !!}</p>
       </div>
       <div class="w-full p-6 sm:w-1/2">
-        <img class="mx-auto rounded-lg " src="/images/1654287297.jpg" alt="photo abput gunda">
+        <img class="mx-auto rounded-lg " src="/images/1634687850.jpg" alt="photo abput gunda">
         
       </div>
     </div>
