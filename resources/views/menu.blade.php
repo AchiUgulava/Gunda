@@ -2,7 +2,6 @@
 
 @section('content')
 
-<!DOCTYPE html>
 <head>
   <style> 
     .swiper {
@@ -18,7 +17,6 @@
     } 
   </style>
 </head>
-<html lang="en">
 
 
     <body class="leading-normal tracking-normal text-white gradient" style=" font-family: 'Source Sans Pro', 'Noto Sans Georgian', sans-serif;">
@@ -173,5 +171,4 @@
       });
     </script>
 
-</html>
 @endsection

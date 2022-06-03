@@ -2,12 +2,6 @@
 
 @section('content')
 
-
-<!DOCTYPE html>
-<html lang="en">
-
-
-
   <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', 'Noto Sans Georgian', sans-serif;">    
     
   
@@ -233,6 +227,4 @@
     </section>
     
   </body>
-  
-</html>
 @endsection
