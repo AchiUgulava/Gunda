@@ -98,8 +98,10 @@
                     @foreach ($products->where('type_id', $type->id ) as $product)
                      <div class=" swiper-slide">
                       <div class="p-2 mx-auto">
-                          <a x-data="{}" x-on:click="window.livewire.emitTo('menu-modal', 'show',{{ $product->id }})" class="cursor-pointer">
-                            <div class="h-auto overflow-hidden bg-white rounded-lg shadow-xl border ">
+                          <a 
+                          {{-- x-data="{}" x-on:click="window.livewire.emitTo('menu-modal', 'show',{{ $product->id }})"  --}}
+                          class="cursor-pointer">
+                            <div class="h-auto overflow-hidden bg-white border rounded-lg shadow-xl ">
                               <img alt="Placeholder" class="w-auto mx-auto overflow-hidden rounded-t-lg h-3/4" src="/images/{{$product->image}}">
                               
                               <h2 class="mx-auto my-2 text-xl font-bold text-center text-gray-900 title-font">{{ $product->name }}</h2>
@@ -122,8 +124,8 @@
               </section>
             </section>
             @endforeach
-          <livewire:scripts />
-          <livewire:menu-modal/>
+          {{-- <livewire:scripts />
+          <livewire:menu-modal/> --}}
     </body>
     <script>
       var swiper = new Swiper(".productSwiper", {

@@ -2,7 +2,6 @@
 
 @section('content')
 
-<!DOCTYPE html>
 
 <body class="flex bg-gray-100 font-family-karla">
 
@@ -151,6 +150,5 @@
         });
     </script>
 </body>
-</html>
 
 @endsection

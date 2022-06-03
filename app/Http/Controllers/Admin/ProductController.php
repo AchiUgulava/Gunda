@@ -191,7 +191,7 @@ class ProductController extends Controller
     {
         $tags=Tags::all();
         
-        if (Auth::check()) return view('admin.product.tags',  
+        if (!Auth::check()) return view('admin.product.tags',  
         [
             'tags'=>$tags, 
         ]);

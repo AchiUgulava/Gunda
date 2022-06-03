@@ -95,7 +95,7 @@
         <div class="w-full mb-4">
           <div class="w-64 h-1 py-0 mx-auto my-0 rounded-t opacity-25 gradient"></div>
         </div>
-        <div class="flex flex-col flex-grow flex-shrink w-full h-60 p-2 ">
+        <div class="flex flex-col flex-grow flex-shrink w-full p-2 h-60 ">
           <a class="relative overflow-hidden rounded-lg shadow-lg cursor-pointer" href="{{ route("menu") }}">
             <img class="object-contain w-full" src="/images/{{ $sliders[0]->image }}" alt="menu">
             <div class="absolute top-0 left-0 w-full px-6 py-4">
@@ -104,7 +104,7 @@
           </a>
         </div>
         @foreach($categories as $category)
-        <div class="flex flex-col flex-grow flex-shrink w-full p-2 md:w-1/3 md:h-96 h-40">
+        <div class="flex flex-col flex-grow flex-shrink w-full h-40 p-2 md:w-1/3 md:h-96">
           <a class="relative overflow-hidden rounded-lg shadow-lg cursor-pointer" href="{{ route('menu.category', $category->translate('en')->name  )}}">
             <img class="object-contain" src="/images/{{ $category->image }}" alt="photo abput gunda">
             <div class="absolute top-0 left-0 w-full px-6 py-4">
@@ -136,7 +136,6 @@
             <div class="flex-none p-6 overflow-hidden bg-white rounded-t-none rounded-b shadow">
               <div class="w-full pt-6 text-3xl font-bold text-center text-gray-600">
                 ${{ $newProducts[1]->price }}
-                <span class="text-base">{{ __('for one thing ') }}</span>
               </div>
               
                 <div class="flex items-center justify-center w-full mt-4 overflow-hidden">
@@ -157,7 +156,7 @@
             <div class="flex-none p-6 mt-auto overflow-hidden bg-white rounded-t-none rounded-b shadow">
               <div class="w-full pt-6 text-3xl font-bold text-center text-gray-600">
                    ${{ $newProducts[0]->price }}
-                <span class="text-base"> {{ _('for one thing') }}</span>
+                
               </div>
               <div class="flex items-center justify-center w-full mt-4 overflow-hidden">
                   
@@ -178,7 +177,6 @@
             <div class="flex-none p-6 overflow-hidden bg-white rounded-t-none rounded-b shadow">
               <div class="w-full pt-6 text-3xl font-bold text-center text-gray-600">
                 ${{ $newProducts[2]->price }}
-                <span class="text-base">{{ _('') }} for one thing</span>
               </div>
                 <div class="flex items-center justify-center w-full mt-4 overflow-hidden">
                   <a class="p-4 mx-auto font-bold text-white transition duration-300 ease-in-out transform rounded-full md:py-4 md:px-8 lg:mx-0 gradient focus:outline-none focus:shadow-outline hover:scale-105" href="{{ route('menu.item', $newProducts[2]->id) }}">
