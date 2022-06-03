@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title> Gunda </title>
         <link href="{{ asset('css/loader.css') }}" rel="stylesheet" />
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
         <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +17,7 @@
         <style> .gradient{background: linear-gradient(90deg, #339ad5 0%, #5176da 100%);} 
           .swiper {
             max-width: auto;
-            max-height: full;
+            max-height: 100%;
           }
         </style>
     </head>
