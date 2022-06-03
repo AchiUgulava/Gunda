@@ -13,7 +13,7 @@ class SlidersController extends Controller
     {
         
 
-        if (Auth::check()){
+        if (!Auth::check()){
            $sliders = Sliders::all();
             return view('admin.sliders.sliders',[
                 'sliders'=>$sliders,
@@ -26,7 +26,7 @@ class SlidersController extends Controller
     }
     public function create()
     {
-        if (Auth::check()) return view('admin.sliders.createsliders');
+        if (!Auth::check()) return view('admin.sliders.createsliders');
         else redirect()->route('home');
         
     }

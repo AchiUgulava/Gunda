@@ -13,7 +13,7 @@ class EditcontactController extends Controller
     {
         
 
-        if (Auth::check()){
+        if (!Auth::check()){
             if(!empty(ContactPageText::count()))$text=ContactPageText::first();
             else {$text = new ContactPageText([
                 'en' => [

@@ -17,7 +17,7 @@ class EditmenuController extends Controller
     {
         $categories=Categories::all();
         
-        if (Auth::check()) return view('admin.product.categories',  
+        if (!Auth::check()) return view('admin.product.categories',  
         [
             'categories'=>$categories, 
         ]);

@@ -13,7 +13,7 @@ class NewsController extends Controller
     {
         
 
-        if (Auth::check()){
+        if (!Auth::check()){
            $news = News::all();
             return view('admin.news.news',[
                 'news'=>$news,
@@ -26,7 +26,7 @@ class NewsController extends Controller
     }
 public function create()
     {
-        if (Auth::check()) return view('admin.news.createnews');
+        if (!Auth::check()) return view('admin.news.createnews');
         else redirect()->route('home');
         
     }
@@ -63,7 +63,7 @@ public function create()
     {
         $news = News::find($id);
         
-        if (Auth::check()) return view('admin.news.editnews',  
+        if (!Auth::check()) return view('admin.news.editnews',  
         [
             'news'=> $news,
         ]);

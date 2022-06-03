@@ -14,7 +14,7 @@ class EditaboutController extends Controller
     {
         
 
-        if (Auth::check()){
+        if (!Auth::check()){
             if(!empty(AboutPageText::count()))$text=AboutPageText::first();
             else {$text = new AboutPageText([
                 'en' => [

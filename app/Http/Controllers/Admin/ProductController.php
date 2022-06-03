@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        if (Auth::check()) return view('admin.product.products',[
+        if (!Auth::check()) return view('admin.product.products',[
             'products'=>$products,
         ]);
         else redirect()->route('home');
@@ -30,7 +30,7 @@ class ProductController extends Controller
         $baseflavors=Baseflavor::all();
         $tags=Tags::all();
         
-        if (Auth::check()) return view('admin.product.createproduct', [
+        if (!Auth::check()) return view('admin.product.createproduct', [
             'types'=>$types,
             'baseflavors'=>$baseflavors,
             'tags'=>$tags,
@@ -84,7 +84,7 @@ class ProductController extends Controller
         $baseflavors=Baseflavor::all();
         $tags=Tags::all();
         $productTags=$product->tags()->pluck('id');
-        if (Auth::check()) return view('admin.product.editproduct',  
+        if (!Auth::check()) return view('admin.product.editproduct',  
         [
             'id'=>$id,
             'product'=>$product,
@@ -151,7 +151,7 @@ class ProductController extends Controller
     {
         $baseflavors=Baseflavor::all();
         
-        if (Auth::check()) return view('admin.product.flavors',  
+        if (!Auth::check()) return view('admin.product.flavors',  
         [
             'baseflavors'=>$baseflavors, 
         ]);
@@ -231,7 +231,7 @@ class ProductController extends Controller
     {
         $types=Type::all();
         $categories=Categories::all();
-        if (Auth::check()) return view('admin.product.types',  
+        if (!Auth::check()) return view('admin.product.types',  
         [
             'types'=>$types,
             'categories' =>$categories, 
