@@ -67,12 +67,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DATABASE_URL'),
-            'host' => $DATABASE_URL['host'],
-            'port' => $DATABASE_URL['port'],
-            'database' => ltrim($DATABASE_URL['path'],'/'),
-            'username' => $DATABASE_URL['user'],
-            'password' => $DATABASE_URL['pass'],
+            'host' => ' ec2-34-227-120-79.compute-1.amazonaws.com',
+            'port' => '5432',
+            'database' => 'postgres://opwvcohyjthzfi:f16d5db355f3921bf392b877507f6b91b94e263d5b418a0dc6bca8b14114ce5c@ec2-34-227-120-79.compute-1.amazonaws.com:5432/df5gct9bvb42lf',
+            'username' => 'opwvcohyjthzfi',
+            'password' => 'f16d5db355f3921bf392b877507f6b91b94e263d5b418a0dc6bca8b14114ce5c',
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
